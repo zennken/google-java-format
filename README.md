@@ -7,24 +7,27 @@
 
 ## Customization
 
-To maintain backward compatibility, some customizations have been applied:
+This repository is a fork of [google/google-java-format](https://github.com/google/google-java-format/) and includes several customizations made for personal purposes.
 
-Changes
-1. Indentation: 2 → 4 spaces
-2. Maximum line length: 100 → 120 characters
+Changes to maintain backward compatibility
+- Indentation: 2 → 4 spaces
+- Maximum line length: 100 → 120 characters
 
-New
-1. --euc-kr option: Enables reading and writing Java files with EUC-KR encoding
+New feature 
+- --euc-kr option: Enables reading and writing Java files with EUC-KR encoding
 
+## Building from source
+
+```
+mvn install -DskipTests
+ls ./core/target/google-java-format-HEAD-SNAPSHOT-all-deps.jar
+```
 ## Using the formatter
 
 ### From the command-line
 
-[Download the formatter](https://github.com/google/google-java-format/releases)
-and run it with:
-
-```
-java -jar /path/to/google-java-format-${GJF_VERSION?}-all-deps.jar <options> [files...]
+```bash
+find src -name "*.java" -print0 | xargs -0 java -jar google-java-format-HEAD-SNAPSHOT-all-deps.jar -i [--euc-kr]
 ```
 
 Options
@@ -49,17 +52,6 @@ new Formatter().formatSource(source, output);
 
 Your starting point should be the instance methods of
 `com.google.googlejavaformat.java.Formatter`.
-
-## Building from source
-
-```
-mvn install -DskipTests
-ls ./core/target/google-java-format-HEAD-SNAPSHOT-all-deps.jar
-```
-
-## Contributing
-
-Please see [the contributors guide](CONTRIBUTING.md) for details.
 
 ## License
 
