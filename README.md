@@ -34,10 +34,7 @@ Options
 - -i: replace source code
 - --euc-kr: reading and writing Java files with EUC-KR encoding
 
-***Note:*** *There is no configurability as to the formatter's algorithm for
-formatting. This is a deliberate design decision to unify our code formatting on
-a single format.*
-
+### From Java code
 ```java
 String formattedSource = new Formatter().formatSource(sourceString);
 ```
