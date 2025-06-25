@@ -53,7 +53,7 @@ Your starting point should be the instance methods of
 ## Building from source
 
 ```
-mvn install
+mvn install -DskipTests
 ls ./core/target/google-java-format-HEAD-SNAPSHOT-all-deps.jar
 ```
 
