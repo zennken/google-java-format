@@ -33,7 +33,8 @@ public abstract class JavaFormatterOptions {
 
   public enum Style {
     /** The default Google Java Style configuration. */
-    GOOGLE(1),
+    /** Indentation: 2 -> 4 spaces */
+    GOOGLE(2),
 
     /** The AOSP-compliant configuration. */
     AOSP(2);

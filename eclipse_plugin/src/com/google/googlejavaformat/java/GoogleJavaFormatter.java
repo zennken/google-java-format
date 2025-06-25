@@ -30,7 +30,7 @@ import org.eclipse.text.edits.TextEdit;
 /** Runs the Google Java formatter on the given code. */
 public class GoogleJavaFormatter extends CodeFormatter {
 
-  private static final int INDENTATION_SIZE = 2;
+  private static final int INDENTATION_SIZE = 4;
 
   @Override
   public TextEdit format(
