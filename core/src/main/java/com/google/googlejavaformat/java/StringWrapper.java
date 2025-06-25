@@ -491,7 +491,7 @@ public final class StringWrapper {
     context.put(DiagnosticListener.class, diagnostics);
     Options.instance(context).put("--enable-preview", "true");
     Options.instance(context).put("allowStringFolding", Boolean.toString(allowStringFolding));
-    JavacFileManager fileManager = new JavacFileManager(context, true, UTF_8);
+    JavacFileManager fileManager = new JavacFileManager(context, true, Main.FILE_CHARSET);
     try {
       fileManager.setLocation(StandardLocation.PLATFORM_CLASS_PATH, ImmutableList.of());
     } catch (IOException e) {

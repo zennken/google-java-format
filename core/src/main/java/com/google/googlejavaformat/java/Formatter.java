@@ -14,8 +14,6 @@
 
 package com.google.googlejavaformat.java;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
@@ -118,7 +116,7 @@ public final class Formatter {
     Options.instance(context).put("allowStringFolding", "false");
     Options.instance(context).put("--enable-preview", "true");
     JCCompilationUnit unit;
-    JavacFileManager fileManager = new JavacFileManager(context, true, UTF_8);
+    JavacFileManager fileManager = new JavacFileManager(context, true, Main.FILE_CHARSET);
     try {
       fileManager.setLocation(StandardLocation.PLATFORM_CLASS_PATH, ImmutableList.of());
     } catch (IOException e) {

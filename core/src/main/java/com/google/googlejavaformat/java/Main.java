@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -42,6 +43,8 @@ import java.util.concurrent.Executors;
 
 /** The main class for the Java formatter CLI. */
 public final class Main {
+
+  public static Charset FILE_CHARSET = UTF_8;
   private static final int MAX_THREADS = 20;
   private static final String STDIN_FILENAME = "<stdin>";
 
@@ -76,8 +79,8 @@ public final class Main {
    * the same package as this Main class.
    */
   static int main(InputStream in, PrintStream out, PrintStream err, String... args) {
-    PrintWriter outWriter = new PrintWriter(new OutputStreamWriter(out, UTF_8));
-    PrintWriter errWriter = new PrintWriter(new OutputStreamWriter(err, UTF_8));
+    PrintWriter outWriter = new PrintWriter(new OutputStreamWriter(out, FILE_CHARSET));
+    PrintWriter errWriter = new PrintWriter(new OutputStreamWriter(err, FILE_CHARSET));
     return main(in, outWriter, errWriter, args);
   }
 
@@ -145,7 +148,7 @@ public final class Main {
       }
       Path path = Paths.get(fileName);
       try {
-        String input = new String(Files.readAllBytes(path), UTF_8);
+        String input = new String(Files.readAllBytes(path), FILE_CHARSET);
         cs.submit(new FormatFileCallable(parameters, path, input, options));
         files++;
       } catch (IOException e) {
@@ -188,7 +191,7 @@ public final class Main {
           continue; // preserve original file
         }
         try {
-          Files.write(path, formatted.getBytes(UTF_8));
+          Files.write(path, formatted.getBytes(FILE_CHARSET));
         } catch (IOException e) {
           errWriter.println(path + ": could not write file: " + e.getMessage());
           allOk = false;
@@ -212,7 +215,7 @@ public final class Main {
   private int formatStdin(CommandLineOptions parameters, JavaFormatterOptions options) {
     String input;
     try {
-      input = new String(ByteStreams.toByteArray(inStream), UTF_8);
+      input = new String(ByteStreams.toByteArray(inStream), FILE_CHARSET);
     } catch (IOException e) {
       throw new IOError(e);
     }

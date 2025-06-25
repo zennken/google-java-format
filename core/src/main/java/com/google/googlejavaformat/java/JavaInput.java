@@ -354,7 +354,7 @@ public final class JavaInput extends Input {
     stopTokens = ImmutableSet.<TokenKind>builder().addAll(stopTokens).add(TokenKind.EOF).build();
     Context context = new Context();
     Options.instance(context).put("--enable-preview", "true");
-    JavaFileManager fileManager = new JavacFileManager(context, false, UTF_8);
+    JavaFileManager fileManager = new JavacFileManager(context, false, Main.FILE_CHARSET);
     context.put(JavaFileManager.class, fileManager);
     DiagnosticCollector<JavaFileObject> diagnosticCollector = new DiagnosticCollector<>();
     context.put(DiagnosticListener.class, diagnosticCollector);

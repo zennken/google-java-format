@@ -233,7 +233,7 @@ public class RemoveUnusedImports {
     Options.instance(context).put("--enable-preview", "true");
     Options.instance(context).put("allowStringFolding", "false");
     JCCompilationUnit unit;
-    JavacFileManager fileManager = new JavacFileManager(context, true, UTF_8);
+    JavacFileManager fileManager = new JavacFileManager(context, true, Main.FILE_CHARSET);
     try {
       fileManager.setLocation(StandardLocation.PLATFORM_CLASS_PATH, ImmutableList.of());
     } catch (IOException e) {

@@ -24,6 +24,7 @@ import com.google.common.collect.RangeSet;
 import com.google.common.collect.TreeRangeSet;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -130,6 +131,9 @@ final class CommandLineOptionsParser {
         case "--assume-filename":
           optionsBuilder.assumeFilename(getValue(flag, it, value));
           break;
+        case "--euc-kr":
+          Main.FILE_CHARSET = Charset.forName("EUC-KR");
+          break;
         default:
           throw new IllegalArgumentException("unexpected flag: " + flag);
       }
@@ -204,7 +208,7 @@ final class CommandLineOptionsParser {
       } else {
         Path path = Paths.get(arg.substring(1));
         try {
-          String sequence = new String(Files.readAllBytes(path), UTF_8);
+          String sequence = new String(Files.readAllBytes(path), Main.FILE_CHARSET);
           expandParamsFiles(ARG_SPLITTER.split(sequence), expanded);
         } catch (IOException e) {
           throw new UncheckedIOException(path + ": could not read file: " + e.getMessage(), e);
