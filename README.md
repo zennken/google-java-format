@@ -9,11 +9,11 @@
 
 This repository is a fork of [google/google-java-format](https://github.com/google/google-java-format/) and includes several customizations made for personal purposes.
 
-Changes to maintain backward compatibility
+**Changes to maintain backward compatibility**
 - Indentation: 2 → 4 spaces
 - Maximum line length: 100 → 120 characters
 
-New feature 
+**New feature**
 - --euc-kr option: Enables reading and writing Java files with EUC-KR encoding
 
 ## Building from source
