@@ -31,8 +31,8 @@ find src -name "*.java" -print0 | xargs -0 java -jar google-java-format-HEAD-SNA
 ```
 
 Options
-- -i: Replace source code
-- --euc-kr
+- -i: replace source code
+- --euc-kr: reading and writing Java files with EUC-KR encoding
 
 ***Note:*** *There is no configurability as to the formatter's algorithm for
 formatting. This is a deliberate design decision to unify our code formatting on
